@@ -1,7 +1,10 @@
 package controllers
 
+import play.api.libs.json.Json
 import play.api.mvc._
 import models.Artist
+
+
 
 object Application extends Controller {
 
@@ -41,5 +44,13 @@ object Application extends Controller {
       Ok(views.html.home(result)) 
     } 
   }
+  
+  def subscribe = Action(parse.json) {
+    request =>
+      val reqData: JsValue = request.body
+      val emailId = (reqData \ "emailId").as[String]
+      val interval = (reqData \ "interval").as[String]
+      Ok(s"added $emailId to subscriber's list and will send updates every $interval")
+  } 
 
 }

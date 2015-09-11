@@ -3,12 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index
-GET     /api/artist                 controllers.Application.listArtist
+GET     /                       controllers.Application.index
+GET     /artist                 controllers.Application.listArtist
 # By default parameters is defined as string, so it needn't to specify the type of name parameter.
-GET     /api/artist/:name           controllers.Application.fetchArtistByName(name)
-GET     /api/search/artist          controllers.Application.search(name:String?="",country:String?="") 
-GET     /api/search2/artist    controllers.Application.search2(name:Option[String],country:String)
+GET     /artist/:name           controllers.Application.fetchArtistByName(name)
+GET     /search/artist          controllers.Application.search(name:String?="",country:String?="") 
+GET     /search2/artist    		controllers.Application.search2(name:Option[String],country:String)
+POST    /subscribe         		controllers.Application.subscribe 
 
 
 # Map static resources from the /public folder to the /assets URL path
